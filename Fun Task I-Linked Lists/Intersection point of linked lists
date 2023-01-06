@@ -1,0 +1,37 @@
+Node * lengthLL( Node * head){
+    Node * temp = head;
+    int cnt = 0;
+    while(temp){
+      cnt++;
+      temp = temp-> next;
+    }
+    return cnt;
+}
+
+Node * findIntersection( Node * first, Node * second){
+    Node * t1 = first;
+    Node * t2 = second;
+    
+    int len1 = lengthLL(first);
+    int len2 = lengthLL(second);
+    
+    int diff = abs(len1 - len2);
+    
+    if(len1 > len2){
+      while(diff--){
+        t1 = t1 -> next;
+      }
+    }
+    else{
+      while(diff--){
+        t2 = t2 -> next;
+      }
+    }
+    
+    while(t1 != t2){
+      t1 = t1-> next;
+      t2 = t2 -> next;
+    }
+    
+    return t1 -> data;
+}
