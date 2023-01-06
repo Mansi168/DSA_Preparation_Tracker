@@ -1,0 +1,28 @@
+Node * kReverse( Node * head, int k){
+    if(head==NULL){
+      return Null;
+    }
+    
+    //step 1 : reverse first k nodes
+    
+    Node * prev =  NULL;
+    Node * curr = head;
+    node * next = Null;
+    int count = 0;
+    while( curr != NULL && count < k){
+      next = curr -> next;
+      curr -> next  = prev;
+      prev =  curr;
+      curr = next;
+      count++;
+    }
+    
+    //step 2 : aage ka recursion dekhega
+    if( next != NULL ){
+      head -> next = kReverse(next, k);
+    }
+    
+    //step 3 : return head of reversed linked list
+    return prev;
+    
+}
