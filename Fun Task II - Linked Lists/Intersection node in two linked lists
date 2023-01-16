@@ -1,0 +1,45 @@
+Node* startingNodeOfCycle(Node* head){
+  if(head== NULL || head->next ==NULL){
+    return NULL;
+  }
+  
+  Node* slow  = head;
+  Node* fast = head;
+  
+  while(fast!= NULL && fast -> next != NULL){
+    slow  = slow -> next;
+    fast = fast-> next;
+    
+    if(slow == fast) break;
+  }
+  
+  if(slow!=fast) return NULL:
+  
+  slow = head;
+  fast = fast;
+  while(slow != fast){
+    slow = slow->next;
+    fast = fast->next;
+  }
+  return slow;
+}
+
+Node* IntersectionNodeInTwoLL(Node* headA,Node* headB){
+  if(headA == NULL || headB == NULL){
+    return NULL;
+  }
+  
+  Node* tail = headA;
+  while(tail->next!= NULL){
+    tail = tail->next;
+  }
+  
+  tail->next = headB;
+  
+  Node* ans = startingNodeOfCycle(headA);
+  
+  tail->next = NULL;
+  
+  return ans;
+}
+    
