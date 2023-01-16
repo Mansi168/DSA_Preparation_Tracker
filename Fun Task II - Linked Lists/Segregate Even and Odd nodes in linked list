@@ -1,0 +1,28 @@
+Node* segregateEvenOdd(Node* head){
+  if(head==NULL && head->next == NULL){
+    return head;
+  }
+  
+  Node* dummyEven = new Node(-1);
+  Node* dummyOdd = new Node(-1);
+  Node* evenTail = dummyEven;
+  Node* oddTail = dummyOdd;
+  Node* curr = head;
+  
+  while(curr!=NULL){
+    if(curr->data %2 != 0){
+      oddtail -> next = curr;
+      oddTail = oddTail -> next;
+    }
+    else{
+      eventail -> next = curr;
+      eventail = evenTail -> next;
+    }
+    curr = curr->next;
+ }
+ 
+ eventail -> next = dummyOdd -> next;
+ oddTail -> next = NULL;
+ return dummyEven -> next;
+}
+    
