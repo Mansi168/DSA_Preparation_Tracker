@@ -2,13 +2,12 @@ Node* SortedMerge(Node* a, Node* b)
 {
 	Node* result = NULL;
 
-	//Base case to end search  
 	if (a == NULL)
 		return (b);
 	else if (b == NULL)
 		return (a);
 
-	// Choose either a or b, and start recursion
+	
 	if (a->data <= b->data) {
 		result = a;
 		result->next = SortedMerge(a->next, b);
@@ -21,22 +20,19 @@ Node* SortedMerge(Node* a, Node* b)
 	return result;
 }
 
-// Primary function that gives sorted output.
+
 Node* mergeKLists(Node* arr[], int last)
 {
-	// repeat until only one list is left
 	while (last != 0) {
 		int i = 0, j = last;
 
 		
 		while (i < j) {
-			// merge List i with List j and store it in List i
+			
 			arr[i] = SortedMerge(arr[i], arr[j]);
 
-			// consider next pair
 			i++, j--;
 
-			// If all pairs are merged, update last
 			if (i >= j)
 				last = j;
 		}
