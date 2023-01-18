@@ -1,0 +1,52 @@
+Node* reverse(Node* head){
+  if(head==NULL || head->next == NULL){
+    return head;
+  }
+  
+  Node* prev = NULL;
+  Node* curr = head;
+  
+  while(curr!= NULL){
+    Node forw = curr->next;
+    curr->next = prev;
+    prev = curr;
+    curr= forw;
+  }
+  
+  return prev;
+}
+
+Node* subTwoNumbers(Node* l1, Node* l2){
+  if(l2 == NULL){
+    return l1;
+  }
+  
+  if(l1==NULL){
+    l2->data = -l2->data;
+    return l2;
+  }
+  //reverse krao llists ko
+  NOde* c1 = reverse(l1);
+  Node* c2 = reverse(l2;
+  
+  Node* head = new Node(-1);
+  Node* itr = head;
+  
+  int borrow = 0;
+  while(c1 != NULL){
+  
+    int diff = borrow + c1->data - (c2 != NULL ? c2 ->data : 0);
+    if(diff<0){
+      borrow = -1;
+      diff = diff + 10;
+    }else{
+      borrow = 0;
+    }
+    
+    itr -> next = new Node(diff);
+    itr = itr->next;
+  }
+  
+  return reverse(head->next);
+}
+    
