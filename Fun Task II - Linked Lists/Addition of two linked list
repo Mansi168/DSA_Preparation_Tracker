@@ -1,0 +1,45 @@
+Node* reverse(Node* head){
+  if(head==NULL  || head->next == NULL){
+    return head;
+  }
+  
+  Node* prev = NULL;
+  Node* curr = head;
+  
+  while(curr!=NULL){
+    Node* forw = curr->next;
+    curr->next = prev;
+    prev = curr;
+    curr = forw;
+  }
+  return prev;
+}
+
+Node* addTwoNumbers(Node* l1, Node* l2){
+  if(l1==NULL || l2==NULL){
+    return l1 != NULL ? l1 : l2;
+  }
+  
+  Node* c1 = reverse(l1);
+  Node* c2 = reverse(l2);
+  
+  //dummy node bnaenge
+  Node* head = new Node(-1);
+  Node* itr = head;
+  
+  int carry = 0;
+  while(l1!=NULL || c2!=NULL || carry!=NULL){
+    int sum = carry + (c1!=NULL ? c1->data : 0) + (c2!=NULL ? c2->data : 0);
+    int digit = sum % 10;
+    carry = sum / 10;
+    
+    itr -> next = new Node(digit);
+    itr = itr ->  next;
+    
+    if(c1 != NULL) c1 = c1 -> next;
+    if(c2 != NULL) c2 = c2 -> next;
+  }
+  
+  return reverse(head -> next);
+}
+    
