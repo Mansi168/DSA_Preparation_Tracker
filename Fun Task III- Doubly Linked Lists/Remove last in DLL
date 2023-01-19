@@ -1,0 +1,14 @@
+Node* removeLastInDLL(Node* &tail){
+  if(tail->prev == NULL){
+    return NULL;
+  }
+  
+  Node* curr = tail;
+  
+  Node* prev = curr->prev;
+  curr -> prev = NULL;
+  prev -> next = NULL;
+  curr = prev;
+  
+  return tail;
+}
