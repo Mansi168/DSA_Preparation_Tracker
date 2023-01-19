@@ -1,0 +1,9 @@
+void insertAtHead(Node* &head, int d){
+  //new node create kro
+  Node* temp = new Node(d);
+  
+  temp -> next = head;
+  head -> prev = temp;
+  head = temp;
+  
+}
