@@ -1,0 +1,14 @@
+Node* removeFirstInDLL(Node* head){
+  if(head->next == NULL){
+    return NULL;
+  }
+  
+  Node* forw = NULL;
+  
+  forw = head->next;
+  head -> next = NULL;
+  forw -> prev = NULL;
+  head = forw;
+  
+  return head;
+}
