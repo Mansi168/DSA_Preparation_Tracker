@@ -1,0 +1,13 @@
+f(int n, vector<int>&heights){
+  vector<int>dp(n+1, -1);
+  dp[0] = 0;
+  
+  for(int i=0; i<n-1; i++){
+    fs= dp[i-1] + abs(heights[i] - heights[i-1]);
+    if(i>1)
+      ss= dp[i-2] + abs(heights[i] - heights[i-2]);
+      
+    dp[i] = min(fs, ss);
+  }
+  return dp[n-1];
+}
