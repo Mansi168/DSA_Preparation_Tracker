@@ -1,0 +1,15 @@
+#define mod 1000000007
+int count(int n, vector<int>&dp){
+  //base case
+  if(n==0)return 1;
+  if(n<0)return 0;
+  
+  if(dp[n]!=-1)return dp[n]]%mod;
+  
+  dp[n] = count(n-1, dp) + count(n-2, dp);
+  return dp[n]%mod;
+}
+int countDistinctWays(int nStairs){
+  vector<int>dp(n+1, -1);
+  return count(nStairs, dp);
+}
